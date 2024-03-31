@@ -53,12 +53,13 @@ Save, and quit.
 
 Create an executable script to restart `asus-fancontrol` upon resume from suspend.
 
-`/etc/pm/sleep.d/98asus-fancontrol`
+`/lib/systemd/system-sleep/98asus-fancontrol`:
 
-    #!/bin/bash
+    #!/bin/sh
     case "$1" in
-    hibernate|suspend) true;;
-    resume|thaw) echo path/to/asus-fancontrol | /usr/bin/at now;;
+        post)
+            echo /usr/local/bin/asus-fancontrol | /usr/bin/at now
+            ;;
     esac
     
 Finally, you may either reboot, or suspend and resume, to get it going on the background.
