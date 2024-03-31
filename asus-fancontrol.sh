@@ -138,7 +138,7 @@ exit_if_not_alone () {
 
 get_temperature () {
         local temp
-        temp=`cat /sys/class/thermal/thermal_zone0/temp`
+        temp=`cat /sys/class/thermal/thermal_zone7/temp`
         temp=${temp:0:2}
         echo $temp
         return 0
